@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Examen</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Theorie Examen</h1>
+<p>50 vragen – minimum 40/50 of 45/50</p>
+
+<div id="quiz"></div>
+<button onclick="finish()" class="btn">Afronden</button>
+
+<script>
+let questions = [
+    {q:"Wat doe je bij blauwe zwaailichten?", a:"Plaats maken", o:["Doorrijden","Stoppen midden op de weg"]},
+    {q:"Max snelheid in woonwijk RP?", a:"50 km/u", o:["70 km/u","30 km/u"]},
+];
+// Voeg hier 50 vragen toe ↓
+// Je kunt ze traditioneel of RP-stijl maken
+
+let score = 0;
+let quizHTML = "";
+
+questions.forEach((q,i)=>{
+    quizHTML += `<div class="vraag">
+        <p>${i+1}. ${q.q}</p>
+        <label><input type='radio' name='v${i}' value='${q.a}'>${q.a}</label><br>
+        <label><input type='radio' name='v${i}' value='${q.o[0]}'>${q.o[0]}</label><br>
+        <label><input type='radio' name='v${i}' value='${q.o[1]}'>${q.o[1]}</label><br>
+    </div><hr>`;
+});
+
+document.getElementById("quiz").innerHTML = quizHTML;
+
+function finish(){
+    score = 0;
+    questions.forEach((q,i)=>{
+        let answer = document.querySelector(`input[name='v${i}']:checked`);
+        if(answer && answer.value === q.a){
+            score++;
+        }
+    });
+    localStorage.setItem("score", score);
+    window.location = "resultaat.html";
+}
+</script>
+
+</body>
+</html>
