@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Theorieboek</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Theorieboek</h1>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const type = urlParams.get('type');
+
+document.write("<h2>Rijbewijs " + type + "</h2>");
+
+if(type === "B"){
+    document.write("<p>Basisregels voor auto’s... (hier komt jouw inhoud)</p>");
+}
+if(type === "C"){
+    document.write("<p>Regels voor vrachtwagens... (jouw inhoud)</p>");
+}
+if(type === "D"){
+    document.write("<p>Regels voor bussen... (jouw inhoud)</p>");
+}
+</script>
+
+<a href="index.html" class="btn">Terug</a>
+
+</body>
+</html>
